@@ -29,7 +29,7 @@ void setup(){
                     "TaskTwo",        /* String with name of task. */
                     2048,              /* Stack size in bytes. */
                     NULL,             /* Parameter passed as input of the task */
-                    1,                /* Priority of the task. */
+                    2,                /* Priority of the task. */
                     NULL);            /* Task handle. */
 
    xTaskCreate(
@@ -80,10 +80,12 @@ void taskTwo( void * parameter )
     {
       Serial.print("\nHello from task 2"); 
 
-     motorobject_motor.set_speed(MotorA, Forward, 50);
-     motorobject_motor.set_speed(MotorB, Backward, 50);
+     motorobject_motor.set_speed(MotorA, Forward, 100);
+     motorobject_motor.set_speed(MotorB, Backward, 100);
 
-     vTaskDelay(1000 / portTICK_PERIOD_MS);
+    // delay(1000);
+
+     vTaskDelay(100 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 2");
@@ -107,7 +109,8 @@ void taskThree( void * parameter )
     Serial.print(arr[1]);
     Serial.print(" Z = ");
     Serial.print(arr[2]);
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
+
+    vTaskDelay(100 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 3");
