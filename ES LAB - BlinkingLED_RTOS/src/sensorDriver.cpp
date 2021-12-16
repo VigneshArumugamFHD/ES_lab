@@ -27,7 +27,6 @@
 
 const uint8_t dataReadyPin = 2;
 
-// const uint8_t eepromAddress = 0x50;
 
 OPT3101 sensor; /* create an object of the sensor class */
 
@@ -47,7 +46,6 @@ void sclass::SETUP() {
   /* Wire.begin takes two arguments, first being SDA and second being SCL (Wire.begin(SDA,SCL)) */
   Wire.begin(27,26);
 
-  // sensor.resetAndWait();
 
   Serial.println("starting");
 
@@ -56,30 +54,12 @@ void sclass::SETUP() {
   while (!Serial) {}
 
   sensor.init();
-
-
-
   if (sensor.getLastError()) /* case it is not possible to connect to the sensor */
   {
     Serial.print(F("Failed to initialize OPT3101: error "));
     Serial.println(sensor.getLastError());
     while (1) {} /* stay */
   }
-
-//  delay(1000);
-//  sensor.writeReg(0x00, 0x200000);
-//   Wire.beginTransmission(eepromAddress);
-//   Wire.write(0);
-//   Wire.write(0xB4);
-//   Wire.write(0xF0);
-//   uint8_t lastError = Wire.endTransmission();
-//   if (lastError)
-//   {
-//     Serial.println(F("Failed to write EEPROM."));
-//     while (1) {}
-//   }
-//   Serial.println(F("Wrote EEPROM."));
-
   sensor.setContinuousMode();
   sensor.enableDataReadyOutput(1);
   sensor.setFrameTiming(32); /* to average the specified number of samples taken before returning a value */
@@ -115,4 +95,3 @@ int16_t *sclass::reading() {
 }
 
 sclass sensorobject = sclass(); /* creating an object of class sensor */
-
