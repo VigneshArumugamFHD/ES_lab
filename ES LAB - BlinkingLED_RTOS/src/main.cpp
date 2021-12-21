@@ -1,20 +1,32 @@
 #include <Arduino.h>
 #include "motorDriver.h"
 #include "sensorDriver.h"
+#include "AWS.h"
+
 
 void taskOne( void * parameter);
 void taskTwo( void * parameter);
 void taskThree( void * parameter);
+void taskFour( void * parameter);
 
 mclass motorobject_motor =  mclass();
 
 sclass sensorobj = sclass();
+
+myawsclass awsobj = myawsclass();
 
 #define LED_BOARD 2 //change here the pin of the board to V2
 
 void setup(){
   pinMode(LED_BOARD, OUTPUT);
   Serial.begin(9600);
+
+  motorobject_motor.SETUP();
+
+  sensorobj.SETUP();
+
+  awsobj.connectAWS();
+  
   delay(1000);
   xTaskCreate(
                     taskOne,          /* Task function. */
@@ -40,6 +52,13 @@ void setup(){
                     1,                /* Priority of the task. */
                     NULL);            /* Task handle. */
 
+  xTaskCreate(
+                    taskFour,          /* Task function. */
+                    "TaskFour",        /* String with name of task. */
+                    2048,              /* Stack size in bytes. */
+                    NULL,             /* Parameter passed as input of the task */
+                    2,                /* Priority of the task. */
+                    NULL);            /* Task handle. */
 
 }
 
@@ -52,7 +71,7 @@ void taskOne( void * parameter )
     //example of a task that executes for some time and then is deleted
     for(;;)
     {
-      Serial.print("\nHello from task 1");
+      // Serial.print("\nHello from task 1");
       
       //Switch on the LED
       digitalWrite(LED_BOARD, HIGH);
@@ -73,12 +92,12 @@ void taskOne( void * parameter )
 void taskTwo( void * parameter )
 {
 
-     motorobject_motor.SETUP();
+     
 
     //example of a task that executes for some time and then is deleted
     for(;;)
     {
-      Serial.print("\nHello from task 2"); 
+      // Serial.print("\nHello from task 2"); 
 
      motorobject_motor.set_speed(MotorA, Forward, 100);
      motorobject_motor.set_speed(MotorB, Backward, 100);
@@ -94,12 +113,12 @@ void taskTwo( void * parameter )
 
 void taskThree( void * parameter )
 {
-  sensorobj.SETUP();
+  
   int16_t* arr;
 
     for(;;)
     {
-      Serial.println("\nHello from task 3");   
+      Serial.print("\n");
 
       arr = sensorobj.reading();
 
@@ -110,9 +129,24 @@ void taskThree( void * parameter )
     Serial.print(" Z = ");
     Serial.print(arr[2]);
 
-    vTaskDelay(100 / portTICK_PERIOD_MS);
+    vTaskDelay(900 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 3");
+    vTaskDelete( NULL );
+}
+
+void taskFour( void * parameter )
+{
+      for(;;)
+    {
+      Serial.print("\n");
+
+      awsobj.stayConnected();
+      
+      vTaskDelay(100 / portTICK_PERIOD_MS);
+
+    }
+    Serial.println("Ending task: 4");
     vTaskDelete( NULL );
 }

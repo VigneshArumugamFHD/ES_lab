@@ -30,7 +30,7 @@
 #include "AWS.h"
 
 /* The MQTT topics that this device should publish/subscribe to */
-#define AWS_IOT_PUBLISH_TOPIC   "esp32/pub" 
+#define AWS_IOT_PUBLISH_TOPIC   "esp32/rover" 
 #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/target"
 
 WiFiClientSecure net = WiFiClientSecure();
