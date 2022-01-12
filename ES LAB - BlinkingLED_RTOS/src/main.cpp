@@ -92,15 +92,13 @@ void taskOne( void * parameter )
 void taskTwo( void * parameter )
 {
 
-     
-
     //example of a task that executes for some time and then is deleted
     for(;;)
     {
       // Serial.print("\nHello from task 2"); 
 
-     motorobject_motor.set_speed(MotorA, Forward, 100);
-     motorobject_motor.set_speed(MotorB, Backward, 100);
+    //  motorobject_motor.set_speed(MotorA, Forward, 100);
+    //  motorobject_motor.set_speed(MotorB, Backward, 100);
 
     // delay(1000);
 
@@ -129,7 +127,7 @@ void taskThree( void * parameter )
     Serial.print(" Z = ");
     Serial.print(arr[2]);
 
-    vTaskDelay(900 / portTICK_PERIOD_MS);
+    vTaskDelay(913 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 3");
@@ -144,7 +142,7 @@ void taskFour( void * parameter )
 
       awsobj.stayConnected();
       
-      vTaskDelay(100 / portTICK_PERIOD_MS);
+      vTaskDelay(1000 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 4");

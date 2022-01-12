@@ -31,7 +31,8 @@
 
 /* The MQTT topics that this device should publish/subscribe to */
 #define AWS_IOT_PUBLISH_TOPIC   "esp32/rover" 
-#define AWS_IOT_SUBSCRIBE_TOPIC "esp32/target"
+#define AWS_IOT_SUBSCRIBE_TARGET_TOPIC "esp32/target"
+#define AWS_IOT_SUBSCRIBE_ROVER_TOPIC "esp32/rover"
 
 WiFiClientSecure net = WiFiClientSecure();
 MQTTClient client = MQTTClient(256);
@@ -92,7 +93,8 @@ void myawsclass::connectAWS() {
   }
 
   /* Subscribe to a topic */
-  client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
+  client.subscribe(AWS_IOT_SUBSCRIBE_TARGET_TOPIC);
+  client.subscribe(AWS_IOT_SUBSCRIBE_ROVER_TOPIC);
 
   Serial.println("AWS IoT Connected!");
 }
