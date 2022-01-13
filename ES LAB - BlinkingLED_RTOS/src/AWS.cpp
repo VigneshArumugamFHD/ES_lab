@@ -33,6 +33,8 @@
 #define AWS_IOT_PUBLISH_TOPIC   "esp32/rover" 
 #define AWS_IOT_SUBSCRIBE_TARGET_TOPIC "esp32/target"
 #define AWS_IOT_SUBSCRIBE_ROVER_TOPIC "esp32/rover"
+#define ROVER_VALUES_NUM 4
+#define TARGET_VALUES_NUM 2
 
 WiFiClientSecure net = WiFiClientSecure();
 MQTTClient client = MQTTClient(256);
@@ -42,12 +44,91 @@ myawsclass::myawsclass() {
 }
 
 
-void messageHandler(String &topic, String &payload) {
-  Serial.println("incoming: " + topic + " - " + payload);
+void messageHandler(String &topic, String &payload) 
+{
+  // Serial.println("incoming: " + topic + " - " + payload);
 
-//  StaticJsonDocument<200> doc;
-//  deserializeJson(doc, payload);
-//  const char* message = doc["message"];
+  StaticJsonDocument<200> doc;
+  boolean number_detected = false;
+  int16_t rover[ROVER_VALUES_NUM];
+  int16_t target[TARGET_VALUES_NUM];
+  String temp;
+  int16_t value = 0;
+  char store[3];
+  int16_t digit_num = 0;
+  deserializeJson(doc, payload);
+
+  
+
+  if(topic == "esp32/target")
+  {
+    temp = "target";
+    int num = 0;
+
+    const char* message = doc[temp];
+
+    Serial.println(message);
+    for(;*message != '\0';*++message)
+    {
+      if((*message>=48)&&(*message<=57))
+      {
+        number_detected = true;
+        store[digit_num] = *message;
+
+        // int16_t temp_num = (int16_t)*message;
+        // temp_num -= 48;
+        
+        // digit_num += 1;
+      }
+      else
+      {
+        if(number_detected == true)
+        {
+          value = atoi(store);
+          target[num] = value;
+          num++;
+          digit_num = 0;
+          number_detected = false;
+        }
+        else
+        {
+          /*Do Nothing*/
+        }
+      }
+    }
+
+    for(int i=0;i<TARGET_VALUES_NUM;i++)
+    {
+      Serial.println(target[i]);
+    }
+    // Serial.println(message);
+
+
+    // const char* message = doc["target"];
+  }
+  else if(topic == "esp32/rover")
+  {
+    temp = "rover";
+    const char* message = doc[temp];
+    Serial.println(message);
+    // const char* message = doc["rover"];
+  }
+  else
+  {
+
+  }
+  
+
+
+// char json[] = "{\"hello\":\"vignesh\"}";
+// deserializeJson(doc, json);
+// const char* world = doc["hello"];
+// Serial.println(world);
+
+  
+
+   
+   
 }
 
 void myawsclass::stayConnected() {

@@ -142,9 +142,20 @@ void taskFour( void * parameter )
 
       awsobj.stayConnected();
       
-      vTaskDelay(1000 / portTICK_PERIOD_MS);
+      vTaskDelay(30 / portTICK_PERIOD_MS);
 
     }
+
+
+  //   StaticJsonDocument<200> doc;
+  // //doc["time"] = millis();
+  // doc["sensor"] = sensorValue;
+  // char jsonBuffer[512];
+  // serializeJson(doc, jsonBuffer); /* print to client */
+
+  // client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
+
+
     Serial.println("Ending task: 4");
     vTaskDelete( NULL );
 }
