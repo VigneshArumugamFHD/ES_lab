@@ -78,7 +78,7 @@ void messageHandler(String &topic, String &payload)
         // int16_t temp_num = (int16_t)*message;
         // temp_num -= 48;
         
-        // digit_num += 1;
+        digit_num += 1;
       }
       else
       {
