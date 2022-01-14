@@ -28,6 +28,7 @@
 #include <ArduinoJson.h>
 #include "WiFi.h"
 #include "AWS.h"
+#include "parsedData.h"
 
 /* The MQTT topics that this device should publish/subscribe to */
 #define AWS_IOT_PUBLISH_TOPIC   "esp32/rover" 
@@ -47,12 +48,12 @@
 WiFiClientSecure net = WiFiClientSecure();
 MQTTClient client = MQTTClient(256);
 
-static int16_t target_x;
-static int16_t target_y;
+int16_t target_x = 0;
+int16_t target_y = 0;
 
-static int16_t rover_x;
-static int16_t rover_y;
-static int16_t rover_angle;
+int16_t rover_x = 0;
+int16_t rover_y= 0;
+int16_t rover_angle = 0;
 
 myawsclass::myawsclass() {
 
@@ -120,10 +121,6 @@ void messageHandler(String &topic, String &payload)
    target_x = target[TARGET_X_COOR];
    target_y = target[TARGET_Y_COOR];
 
-
-   Serial.println(target_x);
-   Serial.println(target_y);
-
   }
   else if(topic == "esp32/rover")
   {
@@ -171,27 +168,12 @@ void messageHandler(String &topic, String &payload)
     rover_y = rover[ROVER_Y_COOR];
     rover_angle = rover[ROVER_ANGLE];
 
-    Serial.println(rover_x);
-    Serial.println(rover_y);
-    Serial.println(rover_angle);
-
   }
   else
   {
 
   }
-  
-
-
-// char json[] = "{\"hello\":\"vignesh\"}";
-// deserializeJson(doc, json);
-// const char* world = doc["hello"];
-// Serial.println(world);
-
-  
-
-   
-   
+     
 }
 
 void myawsclass::stayConnected() {
@@ -253,6 +235,7 @@ void myawsclass::publishMessage(int16_t sensorValue) {
 
   client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
 }
+
 
 myawsclass awsobject = myawsclass();  /* creating an object of class aws */
 

@@ -2,12 +2,14 @@
 #include "motorDriver.h"
 #include "sensorDriver.h"
 #include "AWS.h"
+#include "parsedData.h"
 
 
 void taskOne( void * parameter);
 void taskTwo( void * parameter);
 void taskThree( void * parameter);
 void taskFour( void * parameter);
+void taskFive( void * parameter);
 
 mclass motorobject_motor =  mclass();
 
@@ -58,6 +60,14 @@ void setup(){
                     2048,              /* Stack size in bytes. */
                     NULL,             /* Parameter passed as input of the task */
                     2,                /* Priority of the task. */
+                    NULL);            /* Task handle. */
+
+ xTaskCreate(
+                    taskFive,          /* Task function. */
+                    "TaskFive",        /* String with name of task. */
+                    2048,              /* Stack size in bytes. */
+                    NULL,             /* Parameter passed as input of the task */
+                    1,                /* Priority of the task. */
                     NULL);            /* Task handle. */
 
 }
@@ -145,17 +155,24 @@ void taskFour( void * parameter )
       vTaskDelay(30 / portTICK_PERIOD_MS);
 
     }
-
-
-  //   StaticJsonDocument<200> doc;
-  // //doc["time"] = millis();
-  // doc["sensor"] = sensorValue;
-  // char jsonBuffer[512];
-  // serializeJson(doc, jsonBuffer); /* print to client */
-
-  // client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
-
-
     Serial.println("Ending task: 4");
+    vTaskDelete( NULL );
+}
+
+void taskFive(void * parameter)
+{
+  for(;;)
+  {
+    Serial.println(target_x);
+    Serial.println(target_y);
+
+    Serial.println(rover_x);
+    Serial.println(rover_y);
+    Serial.println(rover_angle);
+
+    vTaskDelay(300 / portTICK_PERIOD_MS);
+  }
+
+   Serial.println("Ending task: 5");
     vTaskDelete( NULL );
 }
