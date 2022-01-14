@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <cmath>
 #include "motorDriver.h"
 #include "sensorDriver.h"
 #include "AWS.h"
@@ -10,6 +11,11 @@ void taskTwo( void * parameter);
 void taskThree( void * parameter);
 void taskFour( void * parameter);
 void taskFive( void * parameter);
+
+
+static int16_t angle_upper;
+static int16_t angle_lower;
+static double degree;
 
 mclass motorobject_motor =  mclass();
 
@@ -51,7 +57,7 @@ void setup(){
                     "TaskThree",        /* String with name of task. */
                     2048,              /* Stack size in bytes. */
                     NULL,             /* Parameter passed as input of the task */
-                    1,                /* Priority of the task. */
+                    2,                /* Priority of the task. */
                     NULL);            /* Task handle. */
 
   xTaskCreate(
@@ -59,16 +65,16 @@ void setup(){
                     "TaskFour",        /* String with name of task. */
                     2048,              /* Stack size in bytes. */
                     NULL,             /* Parameter passed as input of the task */
-                    2,                /* Priority of the task. */
-                    NULL);            /* Task handle. */
-
- xTaskCreate(
-                    taskFive,          /* Task function. */
-                    "TaskFive",        /* String with name of task. */
-                    2048,              /* Stack size in bytes. */
-                    NULL,             /* Parameter passed as input of the task */
                     1,                /* Priority of the task. */
                     NULL);            /* Task handle. */
+
+//  xTaskCreate(
+//                     taskFive,          /* Task function. */
+//                     "TaskFive",        /* String with name of task. */
+//                     2048,              /* Stack size in bytes. */
+//                     NULL,             /* Parameter passed as input of the task */
+//                     2,                /* Priority of the task. */
+//                     NULL);            /* Task handle. */
 
 }
 
@@ -102,24 +108,79 @@ void taskOne( void * parameter )
 void taskTwo( void * parameter )
 {
 
-    //example of a task that executes for some time and then is deleted
+    for(;;)
+    {
+      Serial.print("\n");
+
+      awsobj.stayConnected();
+      
+      vTaskDelay(30 / portTICK_PERIOD_MS);
+
+    }
+    Serial.println("Ending task: 4");
+    vTaskDelete( NULL );
+
+   
+}
+
+
+void taskThree( void * parameter )
+{
+     //example of a task that executes for some time and then is deleted
     for(;;)
     {
       // Serial.print("\nHello from task 2"); 
+        short num = target_y - rover_y;
+    short den = target_x - rover_x;
 
-    //  motorobject_motor.set_speed(MotorA, Forward, 100);
-    //  motorobject_motor.set_speed(MotorB, Backward, 100);
+    double slope = (double)num/(double)den;
+    double radian = atan(slope);
+    degree = (radian*180)/3.1415;
+
+    if(target_x > rover_x)
+    {
+      degree = (double)360 - degree;
+    }
+    else
+    {
+      
+    }
+
+    angle_upper = (int16_t)degree + 30;
+    angle_lower = (int16_t)degree - 30;
+
+
+     if(rover_angle!=0)
+     {
+       if((rover_angle<=angle_upper)&&(rover_angle>=angle_lower))
+        {
+          motorobject_motor.set_speed(MotorA, Backward, 200);
+          motorobject_motor.set_speed(MotorB, Forward, 200);
+         }
+        else
+        {
+          motorobject_motor.set_speed(MotorA, Backward, 150);
+          motorobject_motor.set_speed(MotorB, Backward, 150);
+        }
+     }
+     else
+     {
+        motorobject_motor.set_speed(MotorA, Backward, 0);
+        motorobject_motor.set_speed(MotorB, Forward, 0);
+     }
+     
 
     // delay(1000);
 
-     vTaskDelay(100 / portTICK_PERIOD_MS);
+     vTaskDelay(30 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 2");
     vTaskDelete( NULL );
 }
 
-void taskThree( void * parameter )
+
+void taskFour( void * parameter )
 {
   
   int16_t* arr;
@@ -144,33 +205,37 @@ void taskThree( void * parameter )
     vTaskDelete( NULL );
 }
 
-void taskFour( void * parameter )
-{
-      for(;;)
-    {
-      Serial.print("\n");
-
-      awsobj.stayConnected();
-      
-      vTaskDelay(30 / portTICK_PERIOD_MS);
-
-    }
-    Serial.println("Ending task: 4");
-    vTaskDelete( NULL );
-}
 
 void taskFive(void * parameter)
 {
   for(;;)
-  {
-    Serial.println(target_x);
-    Serial.println(target_y);
+  {    
+    short num = target_y - rover_y;
+    short den = target_x - rover_x;
 
-    Serial.println(rover_x);
-    Serial.println(rover_y);
+    double slope = (double)num/(double)den;
+    double radian = atan(slope);
+    degree = (radian*180)/3.1415;
+
+    if(target_x > rover_x)
+    {
+      degree = (double)360 - degree;
+    }
+    else
+    {
+      
+    }
+
+    angle_upper = (int16_t)degree + 30;
+    angle_lower = (int16_t)degree - 30;
+
+    Serial.println(degree);
+    Serial.println(angle_upper);
+    Serial.println(angle_lower);
     Serial.println(rover_angle);
 
-    vTaskDelay(300 / portTICK_PERIOD_MS);
+
+    vTaskDelay(30 / portTICK_PERIOD_MS);
   }
 
    Serial.println("Ending task: 5");
