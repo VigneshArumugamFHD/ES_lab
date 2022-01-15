@@ -136,15 +136,40 @@ void taskThree( void * parameter )
     double slope = (double)num/(double)den;
     double radian = atan(slope);
     degree = (radian*180)/3.1415;
-
-    if(target_x > rover_x)
+ 
+    if(degree < 0)
     {
-      degree = (double)360 - degree;
+      degree = ((double)-1)* degree;
     }
     else
     {
-      
+      /*DO nothing*/
     }
+
+    if((target_x > rover_x)&&(target_y>rover_y))
+    {
+      /*4th coordinate*/
+      degree = (double)360 - degree;
+    }
+    else if((target_x>rover_x)&&(rover_y>target_y))
+    {
+      /*Do nothing since target is in 1st coordinate*/
+    }
+    else if((rover_x>target_x)&&(rover_y>target_y))
+    {
+      /*2nd coordinate*/
+      degree = (double)180 - degree;
+    }
+    else if((rover_x>target_x)&&(target_y>rover_y))
+    {
+        /*3rd coordinate*/
+        degree = (double)180 + degree;
+    }
+    else
+    {
+
+    }
+
 
     angle_upper = (int16_t)degree + 30;
     angle_lower = (int16_t)degree - 30;
@@ -154,13 +179,22 @@ void taskThree( void * parameter )
      {
        if((rover_angle<=angle_upper)&&(rover_angle>=angle_lower))
         {
-          motorobject_motor.set_speed(MotorA, Backward, 200);
-          motorobject_motor.set_speed(MotorB, Forward, 200);
+          motorobject_motor.set_speed(MotorA, Backward, 250);
+          motorobject_motor.set_speed(MotorB, Forward, 250);
          }
         else
         {
-          motorobject_motor.set_speed(MotorA, Backward, 150);
-          motorobject_motor.set_speed(MotorB, Backward, 150);
+          if(degree<(rover_angle+180))
+          {
+            motorobject_motor.set_speed(MotorA, Backward, 150);
+            motorobject_motor.set_speed(MotorB, Backward, 150);
+          }
+          else
+          {
+            motorobject_motor.set_speed(MotorA, Forward, 150);
+            motorobject_motor.set_speed(MotorB, Forward, 150);
+          }
+          
         }
      }
      else
@@ -206,38 +240,62 @@ void taskFour( void * parameter )
 }
 
 
-void taskFive(void * parameter)
-{
-  for(;;)
-  {    
-    short num = target_y - rover_y;
-    short den = target_x - rover_x;
+// void taskFive(void * parameter)
+// {
+//   for(;;)
+//   {    
+//     short num = target_y - rover_y;
+//     short den = target_x - rover_x;
 
-    double slope = (double)num/(double)den;
-    double radian = atan(slope);
-    degree = (radian*180)/3.1415;
+//     double slope = (double)num/(double)den;
+//     double radian = atan(slope);
+//     degree = (radian*180)/3.1415;
 
-    if(target_x > rover_x)
-    {
-      degree = (double)360 - degree;
-    }
-    else
-    {
-      
-    }
+//     if(degree < 0)
+//     {
+//       degree = ((double)-1)* degree;
+//     }
+//     else
+//     {
+//       /*DO nothing*/
+//     }
 
-    angle_upper = (int16_t)degree + 30;
-    angle_lower = (int16_t)degree - 30;
+//     if((target_x > rover_x)&&(target_y>rover_y))
+//     {
+//       /*4th coordinate*/
+//       degree = (double)360 - degree;
+//     }
+//     else if((target_x>rover_x)&&(rover_y>target_y))
+//     {
+//       /*Do nothing since target is in 1st coordinate*/
+//     }
+//     else if((rover_x>target_x)&&(rover_y>target_y))
+//     {
+//       /*2nd coordinate*/
+//       degree = (double)180 - degree;
+//     }
+//     else if((rover_x>target_x)&&(target_y>rover_y))
+//     {
+//         /*3rd coordinate*/
+//         degree = (double)180 + degree;
+//     }
+//     else
+//     {
 
-    Serial.println(degree);
-    Serial.println(angle_upper);
-    Serial.println(angle_lower);
-    Serial.println(rover_angle);
+//     }
+
+//     angle_upper = (int16_t)degree + 30;
+//     angle_lower = (int16_t)degree - 30;
+
+//     Serial.println(degree);
+//     Serial.println(angle_upper);
+//     Serial.println(angle_lower);
+//     Serial.println(rover_angle);
 
 
-    vTaskDelay(30 / portTICK_PERIOD_MS);
-  }
+//     vTaskDelay(30 / portTICK_PERIOD_MS);
+//   }
 
-   Serial.println("Ending task: 5");
-    vTaskDelete( NULL );
-}
+//    Serial.println("Ending task: 5");
+//     vTaskDelete( NULL );
+// }
