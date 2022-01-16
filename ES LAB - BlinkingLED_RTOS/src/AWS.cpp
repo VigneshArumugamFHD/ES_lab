@@ -83,7 +83,7 @@ void messageHandler(String &topic, String &payload)
 
     const char* message = doc[temp];
 
-    Serial.println(message);
+    
     for(;*message != '\0';*++message)
     {
       if((*message>=48)&&(*message<=57))
@@ -127,7 +127,7 @@ void messageHandler(String &topic, String &payload)
     temp = "rover";
     int num = 0;
     const char* message = doc[temp];
-    Serial.println(message);
+    
     
     for(;*message != '\0';*++message)
     {

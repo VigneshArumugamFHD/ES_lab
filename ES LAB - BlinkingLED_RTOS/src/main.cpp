@@ -13,9 +13,20 @@ void taskFour( void * parameter);
 void taskFive( void * parameter);
 
 
+
+
+
+enum Side
+{
+  Right = 0,  /* Rover Right */
+  Left = 1  /* Rover left */
+};
+
 static int16_t angle_upper;
 static int16_t angle_lower;
 static double degree;
+static boolean obstacle_detected =  false;
+static Side rover_side;
 
 mclass motorobject_motor =  mclass();
 
@@ -177,7 +188,9 @@ void taskThree( void * parameter )
 
      if(rover_angle!=0)
      {
-       if((rover_angle<=angle_upper)&&(rover_angle>=angle_lower))
+       if(obstacle_detected != true)
+       {
+          if((rover_angle<=angle_upper)&&(rover_angle>=angle_lower))
         {
           motorobject_motor.set_speed(MotorA, Backward, 250);
           motorobject_motor.set_speed(MotorB, Forward, 250);
@@ -185,17 +198,49 @@ void taskThree( void * parameter )
         else
         {
           if(degree<(rover_angle+180))
-          {
+          { /*Spinning left*/
             motorobject_motor.set_speed(MotorA, Backward, 150);
             motorobject_motor.set_speed(MotorB, Backward, 150);
           }
           else
-          {
+          { /*Spinning Right*/
             motorobject_motor.set_speed(MotorA, Forward, 150);
             motorobject_motor.set_speed(MotorB, Forward, 150);
           }
           
         }
+       }
+       else
+       {
+         if(rover_side == Right)
+         {
+           /*Spinning Right*/
+           obstacle_detected = false;
+            motorobject_motor.set_speed(MotorA, Forward, 150);
+            motorobject_motor.set_speed(MotorB, Forward, 150);
+            delay(300);
+            motorobject_motor.set_speed(MotorA, Backward, 250);
+            motorobject_motor.set_speed(MotorB, Forward, 250);
+            delay(200);
+
+         }
+         else if(rover_side == Left)
+         {
+            /*Spinning Left*/
+            obstacle_detected = false;
+            motorobject_motor.set_speed(MotorA, Backward, 150);
+            motorobject_motor.set_speed(MotorB, Backward, 150);
+            delay(300);
+            motorobject_motor.set_speed(MotorA, Backward, 250);
+            motorobject_motor.set_speed(MotorB, Forward, 250);
+            delay(200);
+         }
+         else
+         {
+           obstacle_detected = false;
+         }
+       }
+       
      }
      else
      {
@@ -232,7 +277,28 @@ void taskFour( void * parameter )
     Serial.print(" Z = ");
     Serial.print(arr[2]);
 
-    vTaskDelay(913 / portTICK_PERIOD_MS);
+         
+
+      if(arr[0]<150 || (arr[0]<150 && arr[1]<150))
+      {
+        /*Turn right*/
+        rover_side = Right;
+        obstacle_detected = true;
+        
+      }
+      else if(arr[2]<150 || (arr[2]<150 && arr[1]<150))
+      {
+        /*Turn left*/
+        rover_side = Left;
+        obstacle_detected = true;
+      }
+      else
+      {
+        obstacle_detected = false;
+      }
+  
+
+    vTaskDelay(30 / portTICK_PERIOD_MS);
 
     }
     Serial.println("Ending task: 3");
