@@ -31,7 +31,7 @@
 #include "parsedData.h"
 
 /* The MQTT topics that this device should publish/subscribe to */
-#define AWS_IOT_PUBLISH_TOPIC   "esp32/rover" 
+#define AWS_IOT_PUBLISH_TOPIC   "esp32/rover_status"
 #define AWS_IOT_SUBSCRIBE_TARGET_TOPIC "esp32/target"
 #define AWS_IOT_SUBSCRIBE_ROVER_TOPIC "esp32/rover"
 #define ROVER_VALUES_NUM 4
