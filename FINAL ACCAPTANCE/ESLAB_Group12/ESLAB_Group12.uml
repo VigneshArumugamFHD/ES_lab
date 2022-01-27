@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ttNAEH8DEeybRJOxBkmP8w" name="ESLAB_Group12">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_tv_OUH8DEeybRJOxBkmP8w">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_tthwMH8DEeybRJOxBkmP8w" name="Activity1"/>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_tuRXEH8DEeybRJOxBkmP8w" name="StateMachine2">
+    <region xmi:type="uml:Region" xmi:id="_tvPncH8DEeybRJOxBkmP8w" name="Region1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_tvW8MH8DEeybRJOxBkmP8w" name="Interaction3">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_QVJcwH8KEeybRJOxBkmP8w">
+      <body>Calculate rotation angle continiously&#xD;
+&#xD;
+</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_FcuFMH8LEeybRJOxBkmP8w">
+      <body>Detect obstacles&#xD;
+continiously&#xD;
+</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_jvHssH8LEeybRJOxBkmP8w">
+      <body>After rover reached 1st target&#xD;
+</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_okVIIH8LEeybRJOxBkmP8w">
+      <body>After rover reached 2nd target&#xD;
+</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_HY0TkH8NEeybRJOxBkmP8w">
+      <body>Detect virtual boundary&#xD;
+</body>
+    </ownedComment>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_y7UG4H8HEeybRJOxBkmP8w" name="LINUX VM" coveredBy="_D1jBIH8NEeybRJOxBkmP8w _D1iaEH8NEeybRJOxBkmP8w _D1jBIX8NEeybRJOxBkmP8w _NzhC8H8JEeybRJOxBkmP8w _ZaKV8H8JEeybRJOxBkmP8w _RagF0X8LEeybRJOxBkmP8w _ASJoUX8MEeybRJOxBkmP8w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_zpzkkH8HEeybRJOxBkmP8w" name="AWS GREENGRASS" coveredBy="_NzhC8X8JEeybRJOxBkmP8w _dF62AH8JEeybRJOxBkmP8w _ZaKV8X8JEeybRJOxBkmP8w _gCDP8X8JEeybRJOxBkmP8w _Rags4H8LEeybRJOxBkmP8w _ymdUYH8LEeybRJOxBkmP8w _ASKPYH8MEeybRJOxBkmP8w _Ekp_UX8MEeybRJOxBkmP8w"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_0R3DEH8HEeybRJOxBkmP8w" name="ROVER" coveredBy="_DP9SsX8LEeybRJOxBkmP8w _DP9SsH8LEeybRJOxBkmP8w _DP95wH8LEeybRJOxBkmP8w _dF62AX8JEeybRJOxBkmP8w _gCD3AH8JEeybRJOxBkmP8w _ofCDUH8JEeybRJOxBkmP8w _ofBcQH8JEeybRJOxBkmP8w _ymdUYX8LEeybRJOxBkmP8w _Ekp_Un8MEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_DP9SsX8LEeybRJOxBkmP8w" name="ActionExecutionSpecification20Start" covered="_0R3DEH8HEeybRJOxBkmP8w" execution="_DP9SsH8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_DP9SsH8LEeybRJOxBkmP8w" name="ActionExecutionSpecification20" covered="_0R3DEH8HEeybRJOxBkmP8w" finish="_DP95wH8LEeybRJOxBkmP8w" start="_DP9SsX8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_D1jBIH8NEeybRJOxBkmP8w" name="ActionExecutionSpecification37Start" covered="_y7UG4H8HEeybRJOxBkmP8w" execution="_D1iaEH8NEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_D1iaEH8NEeybRJOxBkmP8w" name="ActionExecutionSpecification37" covered="_y7UG4H8HEeybRJOxBkmP8w" finish="_D1jBIX8NEeybRJOxBkmP8w" start="_D1jBIH8NEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_DP95wH8LEeybRJOxBkmP8w" name="ActionExecutionSpecification20Finish" covered="_0R3DEH8HEeybRJOxBkmP8w" execution="_DP9SsH8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_D1jBIX8NEeybRJOxBkmP8w" name="ActionExecutionSpecification37Finish" covered="_y7UG4H8HEeybRJOxBkmP8w" execution="_D1iaEH8NEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_NzhC8H8JEeybRJOxBkmP8w" name="Message4SendEvent" covered="_y7UG4H8HEeybRJOxBkmP8w" message="_Nzgb4H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_NzhC8X8JEeybRJOxBkmP8w" name="Message4ReceiveEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_Nzgb4H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_dF62AH8JEeybRJOxBkmP8w" name="Message10SendEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_dF6O8H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_dF62AX8JEeybRJOxBkmP8w" name="Message10ReceiveEvent" covered="_0R3DEH8HEeybRJOxBkmP8w" message="_dF6O8H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZaKV8H8JEeybRJOxBkmP8w" name="Message7SendEvent" covered="_y7UG4H8HEeybRJOxBkmP8w" message="_ZaJu4H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZaKV8X8JEeybRJOxBkmP8w" name="Message7ReceiveEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_ZaJu4H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gCDP8X8JEeybRJOxBkmP8w" name="Message13SendEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_gCDP8H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gCD3AH8JEeybRJOxBkmP8w" name="Message13ReceiveEvent" covered="_0R3DEH8HEeybRJOxBkmP8w" message="_gCDP8H8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_ofCDUH8JEeybRJOxBkmP8w" name="ActionExecutionSpecification16Start" covered="_0R3DEH8HEeybRJOxBkmP8w" execution="_ofBcQH8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_ofBcQH8JEeybRJOxBkmP8w" name="Calculate rotation degree" covered="_0R3DEH8HEeybRJOxBkmP8w" finish="_RagF0X8LEeybRJOxBkmP8w" start="_ofCDUH8JEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RagF0X8LEeybRJOxBkmP8w" name="Message24SendEvent" covered="_y7UG4H8HEeybRJOxBkmP8w" message="_RagF0H8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Rags4H8LEeybRJOxBkmP8w" name="Message24ReceiveEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_RagF0H8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ymdUYH8LEeybRJOxBkmP8w" name="Message28SendEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_ymctUH8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ymdUYX8LEeybRJOxBkmP8w" name="Message28ReceiveEvent" covered="_0R3DEH8HEeybRJOxBkmP8w" message="_ymctUH8LEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ASJoUX8MEeybRJOxBkmP8w" name="Message31SendEvent" covered="_y7UG4H8HEeybRJOxBkmP8w" message="_ASJoUH8MEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ASKPYH8MEeybRJOxBkmP8w" name="Message31ReceiveEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_ASJoUH8MEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Ekp_UX8MEeybRJOxBkmP8w" name="Message34SendEvent" covered="_zpzkkH8HEeybRJOxBkmP8w" message="_Ekp_UH8MEeybRJOxBkmP8w"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Ekp_Un8MEeybRJOxBkmP8w" name="Message34ReceiveEvent" covered="_0R3DEH8HEeybRJOxBkmP8w" message="_Ekp_UH8MEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_Nzgb4H8JEeybRJOxBkmP8w" name="Send 1st target coordinates" messageSort="asynchCall" receiveEvent="_NzhC8X8JEeybRJOxBkmP8w" sendEvent="_NzhC8H8JEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_ZaJu4H8JEeybRJOxBkmP8w" name="Send rover coordinates" messageSort="asynchCall" receiveEvent="_ZaKV8X8JEeybRJOxBkmP8w" sendEvent="_ZaKV8H8JEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_dF6O8H8JEeybRJOxBkmP8w" name="Send 1st target coordinates" messageSort="asynchCall" receiveEvent="_dF62AX8JEeybRJOxBkmP8w" sendEvent="_dF62AH8JEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_gCDP8H8JEeybRJOxBkmP8w" name="Send rover coordinates" messageSort="asynchCall" receiveEvent="_gCD3AH8JEeybRJOxBkmP8w" sendEvent="_gCDP8X8JEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_RagF0H8LEeybRJOxBkmP8w" name="Send 2nd target coordinates" messageSort="asynchCall" receiveEvent="_Rags4H8LEeybRJOxBkmP8w" sendEvent="_RagF0X8LEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_ymctUH8LEeybRJOxBkmP8w" name="Send 2nd target coordinates" messageSort="asynchCall" receiveEvent="_ymdUYX8LEeybRJOxBkmP8w" sendEvent="_ymdUYH8LEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_ASJoUH8MEeybRJOxBkmP8w" name="Send 3rd target coordinates" messageSort="asynchCall" receiveEvent="_ASKPYH8MEeybRJOxBkmP8w" sendEvent="_ASJoUX8MEeybRJOxBkmP8w"/>
+    <message xmi:type="uml:Message" xmi:id="_Ekp_UH8MEeybRJOxBkmP8w" name="Send 3rd target coordinates" messageSort="asynchCall" receiveEvent="_Ekp_Un8MEeybRJOxBkmP8w" sendEvent="_Ekp_UX8MEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_YnmGAH8IEeybRJOxBkmP8w" name="Data Transfer over Greengrass">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_rR0JcH8IEeybRJOxBkmP8w" name="Share target coordinates"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_HFV6wH8JEeybRJOxBkmP8w" name="Get rover coordinates"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_IRj2QH8JEeybRJOxBkmP8w" name="Get target coordinates"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_t26moH8MEeybRJOxBkmP8w" name="Share rover coordinates"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_nd-rcH8IEeybRJOxBkmP8w" name="LINUX VM"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_p_V08H8IEeybRJOxBkmP8w" name="ROVER"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pcjesH8NEeybRJOxBkmP8w" memberEnd="_pckFwn8NEeybRJOxBkmP8w _pckFw38NEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pckFwH8NEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pckFwX8NEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pckFwn8NEeybRJOxBkmP8w" name="share target coordinates" type="_rR0JcH8IEeybRJOxBkmP8w" association="_pcjesH8NEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pckFw38NEeybRJOxBkmP8w" name="lınux vm" type="_nd-rcH8IEeybRJOxBkmP8w" association="_pcjesH8NEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_qRVxoH8NEeybRJOxBkmP8w" memberEnd="_qRWYsn8NEeybRJOxBkmP8w _qRWYs38NEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qRWYsH8NEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qRWYsX8NEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qRWYsn8NEeybRJOxBkmP8w" name="share rover coordinates" type="_t26moH8MEeybRJOxBkmP8w" association="_qRVxoH8NEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qRWYs38NEeybRJOxBkmP8w" name="lınux vm" type="_nd-rcH8IEeybRJOxBkmP8w" association="_qRVxoH8NEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_rW_yIH8NEeybRJOxBkmP8w" memberEnd="_rXAZMn8NEeybRJOxBkmP8w _rXAZM38NEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rXAZMH8NEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rXAZMX8NEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_rXAZMn8NEeybRJOxBkmP8w" name="rover" type="_p_V08H8IEeybRJOxBkmP8w" association="_rW_yIH8NEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_rXAZM38NEeybRJOxBkmP8w" name="get rover coordinates" type="_HFV6wH8JEeybRJOxBkmP8w" association="_rW_yIH8NEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_sPh8oH8NEeybRJOxBkmP8w" memberEnd="_sPijsn8NEeybRJOxBkmP8w _sPijs38NEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sPijsH8NEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sPijsX8NEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_sPijsn8NEeybRJOxBkmP8w" name="rover" type="_p_V08H8IEeybRJOxBkmP8w" association="_sPh8oH8NEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_sPijs38NEeybRJOxBkmP8w" name="get target coordinates" type="_IRj2QH8JEeybRJOxBkmP8w" association="_sPh8oH8NEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_tAMkkH8NEeybRJOxBkmP8w" name="Package12">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ybGuEH8NEeybRJOxBkmP8w" name="Detect virtual boundary"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_0wjigH8NEeybRJOxBkmP8w" name="Calculate rotation angle"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_3uJVAH8NEeybRJOxBkmP8w" name="Detect obstacles"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_-qomAH8NEeybRJOxBkmP8w" name="Drive motors"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_Lop7oH8OEeybRJOxBkmP8w" client="_-qomAH8NEeybRJOxBkmP8w" supplier="_0wjigH8NEeybRJOxBkmP8w"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_MUrUIH8OEeybRJOxBkmP8w" client="_-qomAH8NEeybRJOxBkmP8w" supplier="_3uJVAH8NEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_xJKlEH8NEeybRJOxBkmP8w" name="LINUX VM"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_xueRkH8NEeybRJOxBkmP8w" name="ROVER"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FGB8IH8OEeybRJOxBkmP8w" memberEnd="_FGCjMn8OEeybRJOxBkmP8w _FGCjM38OEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FGCjMH8OEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FGCjMX8OEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FGCjMn8OEeybRJOxBkmP8w" name="detect virtual boundary" type="_ybGuEH8NEeybRJOxBkmP8w" association="_FGB8IH8OEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FGCjM38OEeybRJOxBkmP8w" name="lınux vm" type="_xJKlEH8NEeybRJOxBkmP8w" association="_FGB8IH8OEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_G4PgoH8OEeybRJOxBkmP8w" memberEnd="_G4QHsn8OEeybRJOxBkmP8w _G4QHs38OEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_G4QHsH8OEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_G4QHsX8OEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_G4QHsn8OEeybRJOxBkmP8w" name="calculate rotation angle" type="_0wjigH8NEeybRJOxBkmP8w" association="_G4PgoH8OEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_G4QHs38OEeybRJOxBkmP8w" name="rover" type="_xueRkH8NEeybRJOxBkmP8w" association="_G4PgoH8OEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IRzUkH8OEeybRJOxBkmP8w" memberEnd="_IRz7oH8OEeybRJOxBkmP8w _IRz7oX8OEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IRzUkX8OEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IRzUkn8OEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IRz7oH8OEeybRJOxBkmP8w" name="detect obstacles" type="_3uJVAH8NEeybRJOxBkmP8w" association="_IRzUkH8OEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IRz7oX8OEeybRJOxBkmP8w" name="rover" type="_xueRkH8NEeybRJOxBkmP8w" association="_IRzUkH8OEeybRJOxBkmP8w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JdCYoH8OEeybRJOxBkmP8w" memberEnd="_JdC_sX8OEeybRJOxBkmP8w _JdC_sn8OEeybRJOxBkmP8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JdCYoX8OEeybRJOxBkmP8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JdC_sH8OEeybRJOxBkmP8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JdC_sX8OEeybRJOxBkmP8w" name="drive motors" type="_-qomAH8NEeybRJOxBkmP8w" association="_JdCYoH8OEeybRJOxBkmP8w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JdC_sn8OEeybRJOxBkmP8w" name="rover" type="_xueRkH8NEeybRJOxBkmP8w" association="_JdCYoH8OEeybRJOxBkmP8w"/>
+  </packagedElement>
+</uml:Model>
